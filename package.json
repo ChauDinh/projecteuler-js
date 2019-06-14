@@ -1,0 +1,22 @@
+{
+  "name": "project-euler",
+  "version": "1.0.0",
+  "description": "This is the collection of JavaScript solutions for problems in projecteuler.net.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChauDinh/projecteuler-js.git"
+  },
+  "author": "Chau Dinh <chaudvb95uc@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChauDinh/projecteuler-js/issues"
+  },
+  "homepage": "https://github.com/ChauDinh/projecteuler-js#readme",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}

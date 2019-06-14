@@ -22,3 +22,5 @@ const InsertionSort = arr => {
 };
 
 console.log(InsertionSort([1, 0, 0, -2, 3, 2918, -1299, 33, 0, 4]));
+
+module.exports = InsertionSort;
