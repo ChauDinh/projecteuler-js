@@ -20,4 +20,36 @@ describe("Return sorted array", () => {
     let actual = InsertionSort.InsertionSortDecrease([1, 2, 3]);
     expect(actual).toEqual(expected);
   });
+
+  it("linear search a given number in array", () => {
+    let expected = 1;
+    let actual = InsertionSort.LinearSearch([1, 2, 3, 4], 2);
+    expect(actual).toEqual(expected);
+
+    expected = 0;
+    actual = InsertionSort.LinearSearch([0, 0, 0, 2], 0);
+    expect(actual).toEqual(expected);
+  });
+
+  it("find the maximum value of an array", () => {
+    let expected = 7;
+    let actual = InsertionSort.FindMaxOfSequence([1, 0, -2, 7]);
+    expect(actual).toEqual(expected);
+
+    expected = -10;
+    actual = InsertionSort.FindMaxOfSequence([
+      -10000,
+      -11,
+      -11,
+      -11,
+      -11,
+      -11,
+      -10
+    ]);
+    expect(actual).toEqual(expected);
+
+    expected = 1000;
+    actual = InsertionSort.FindMaxOfSequence([0, 0, 0, 19, -10000, 100, 1000]);
+    expect(actual).toEqual(expected);
+  });
 });
