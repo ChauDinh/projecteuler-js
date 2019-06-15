@@ -52,4 +52,21 @@ describe("Return sorted array", () => {
     actual = InsertionSort.FindMaxOfSequence([0, 0, 0, 19, -10000, 100, 1000]);
     expect(actual).toEqual(expected);
   });
+
+  it("add two n-bit binary integers", () => {
+    let expected = [1, 0, 0, 0];
+    let actual = InsertionSort.AddTwoInteger([0, 0, 1], [1, 1, 1]);
+    expect(actual).toEqual(expected);
+
+    expected = [1, 0, 0, 1];
+    actual = InsertionSort.AddTwoInteger([1, 1, 0], [0, 1, 1]);
+    expect(actual).toEqual(expected);
+
+    expected = [1, 0, 0, 1, 0, 0, 1, 0, 1];
+    actual = InsertionSort.AddTwoInteger(
+      [0, 0, 1, 1, 0, 1, 0, 1],
+      [1, 1, 1, 1, 0, 0, 0, 0]
+    );
+    expect(actual).toEqual(expected);
+  });
 });

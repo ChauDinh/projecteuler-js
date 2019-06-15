@@ -60,8 +60,6 @@ module.exports.LinearSearch = (arr, n) => {
   return `NIL`;
 };
 
-console.log(this.LinearSearch([1, 2, 3, 4], 2));
-
 /**
  * Consider the Finding Maximum/Minimum Problem
  * Input: A sequence of n numbers Array = [1, 2, 3, ..., n];
@@ -85,4 +83,41 @@ module.exports.FindMaxOfSequence = arr => {
     arr[i + 1] = key;
   }
   return arr[arr.length - 1];
+};
+
+// The minimum value is the same, we need to return the first element of the sorted array.
+
+/**Analysis
+ *
+ * In the CLRS book, they advise we should show off three things about loop invariant:
+ * Initialization - it is true prior to the first interation of the loop
+ * Maintainance - if it is true before an interation then it remains true before the next interation
+ * And Termination - when the loop terminates, the invariant gives us a useful property helping show that the algorithm is true.
+ */
+
+// In particular, unlike mathematical induction, loop invariant have termination to stop the "induction" when the loop terminates.
+
+/**
+ * Consider problem: Adding two n-bit binary integers, stored in two n-element arrays A and B.
+ * The sum of two integers should be stored in binary form in an (n+1)-element array C.
+ * State the problem formally and write a function for adding two integers.
+ */
+
+module.exports.AddTwoInteger = (A, B) => {
+  if (A.length !== B.length) {
+    return `Oops! The length of two arrays must be equal`;
+  }
+
+  let length = A.length;
+  let C = [];
+  let carry = 0;
+
+  for (let i = length - 1; i >= 0; i--) {
+    C[i + 1] = (A[i] + B[i] + carry) % 2;
+    carry = Math.floor((A[i] + B[i] + carry) / 2);
+  }
+
+  C[0] = carry;
+
+  return C;
 };
