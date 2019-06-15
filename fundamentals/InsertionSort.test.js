@@ -68,5 +68,11 @@ describe("Return sorted array", () => {
       [1, 1, 1, 1, 0, 0, 0, 0]
     );
     expect(actual).toEqual(expected);
+
+    expected = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0];
+    actual = InsertionSort.AddTwoInteger(
+      [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1]
+    );
   });
 });
