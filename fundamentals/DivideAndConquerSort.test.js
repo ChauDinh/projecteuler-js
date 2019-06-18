@@ -74,5 +74,14 @@ describe("Return a sorted array", () => {
       5
     );
     expect(actual).toEqual(expected);
+
+    expected = 5;
+    actual = DivideAndConquerSort.BinarySearchWithRecursion(
+      [-1, -0, 0, 1, 2, 4],
+      0,
+      5,
+      4
+    );
+    expect(actual).toEqual(expected);
   });
 });
