@@ -39,4 +39,13 @@ describe("Return a sorted array", () => {
     );
     expect(actual).toEqual(expected);
   });
+
+  it("sort and array by using recursive insertion sort", () => {
+    let expected = [0, 1, 2, 3, 4, 5, 5, 5];
+    let actual = DivideAndConquerSort.InsertionSortWithRecursion(
+      [0, 4, 5, 1, 3, 2, 5, 5],
+      7
+    );
+    expect(actual).toEqual(expected);
+  });
 });

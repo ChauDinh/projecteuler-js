@@ -56,3 +56,33 @@ module.exports.MergeSort = (arr, p, r) => {
 
   return arr;
 };
+
+// Can we rewrite the Merge Sort without using the sentinels L[n+1] and R[n+1]?
+// The answer is yes and this is a problem in CLRS book
+
+/**
+ * Insertion sort with recursive idea
+ * We can express the insertion sort as a recursive procedure as we recursively sort A[1, n-1] and then insert A[n] into the sorted array.
+ *
+ * It tooks T(n) = T(n-1) + O(n) times when n > 1, and when n = 1, the time is a constant
+ *
+ *
+ */
+
+function Insert(arr, k) {
+  let key = arr[k];
+  let index = k - 1;
+  while (index > 0 && arr[index] > key) {
+    arr[index + 1] = arr[index];
+    index--;
+  }
+  arr[index + 1] = key;
+}
+
+module.exports.InsertionSortWithRecursion = (arr, n) => {
+  if (n > 1) {
+    this.InsertionSortWithRecursion(arr, n - 1);
+    Insert(arr, n);
+  }
+  return arr;
+};
