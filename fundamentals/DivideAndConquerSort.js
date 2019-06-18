@@ -72,7 +72,7 @@ module.exports.MergeSort = (arr, p, r) => {
 function Insert(arr, k) {
   let key = arr[k];
   let index = k - 1;
-  while (index > 0 && arr[index] > key) {
+  while (index >= 0 && arr[index] > key) {
     arr[index + 1] = arr[index];
     index--;
   }
@@ -85,4 +85,29 @@ module.exports.InsertionSortWithRecursion = (arr, n) => {
     Insert(arr, n);
   }
   return arr;
+};
+
+/**
+ * More with recursion
+ *
+ * Refering back to the search problem in insertion sort, if the array is sorted, we can eliminate half of the sequence from further consideration.
+ *
+ * The binary search algorithm repeat this procedure.
+ *
+ * The best case is when the value we need to find near the smallest element
+ * The worst-case is when the value we need to find near the largest element
+ */
+
+module.exports.BinarySearchWithRecursion = (arr, p, r, search) => {
+  if (p > r) {
+    return `NIL`;
+  }
+  let q = Math.floor((p + r) / 2);
+  if (search == arr[q]) {
+    return q;
+  } else if (search < arr[q]) {
+    return this.BinarySearchWithRecursion(arr, p, q - 1, search);
+  } else if (search > arr[q]) {
+    return this.BinarySearchWithRecursion(arr, q + 1, r, search);
+  }
 };

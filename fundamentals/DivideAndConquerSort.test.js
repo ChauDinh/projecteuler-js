@@ -47,5 +47,32 @@ describe("Return a sorted array", () => {
       7
     );
     expect(actual).toEqual(expected);
+
+    expected = [-10, -10, -10, -5, -5, 0, 5, 5, 5, 6];
+    actual = DivideAndConquerSort.InsertionSortWithRecursion(
+      [0, 5, 5, 5, -5, -5, 6, -10, -10, -10],
+      9
+    );
+    expect(actual).toEqual(expected);
+  });
+
+  it("search a value by using recursive binary search algorithm", () => {
+    let expected = 6;
+    let actual = DivideAndConquerSort.BinarySearchWithRecursion(
+      [1, 2, 3, 4, 5, 6, 7],
+      0,
+      6,
+      7
+    );
+    expect(actual).toEqual(expected);
+
+    expected = 4 && 5;
+    actual = DivideAndConquerSort.BinarySearchWithRecursion(
+      [-10, -5, -5, 0, 5, 5, 8, 9],
+      0,
+      7,
+      5
+    );
+    expect(actual).toEqual(expected);
   });
 });
