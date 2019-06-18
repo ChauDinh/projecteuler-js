@@ -3,11 +3,11 @@ const DivideAndConquerSort = require("./DivideAndConquerSort");
 describe("Return a sorted array", () => {
   it("sorts an array of numbers in non-decreasing order", () => {
     let expected = [-4, 0, 1, 2, 3, 10, 55];
-    let actual = DivideAndConquerSort.MergeSort([0, 1, 2, 3, -4, 55, 10]);
+    let actual = DivideAndConquerSort.MergeSort([0, 1, 2, 3, -4, 55, 10], 0, 6);
     expect(actual).toEqual(expected);
 
     expected = [0, 0, 0, 0, 0, 0, 0, 100];
-    actual = DivideAndConquerSort.MergeSort([0, 0, 0, 100, 0, 0, 0, 0]);
+    actual = DivideAndConquerSort.MergeSort([0, 0, 0, 100, 0, 0, 0, 0], 0, 7);
     expect(actual).toEqual(expected);
 
     expected = [
@@ -32,28 +32,11 @@ describe("Return a sorted array", () => {
       7,
       7
     ];
-    actual = DivideAndConquerSort.MergeSort([
-      -7,
-      7,
-      7,
-      7,
-      -10,
+    actual = DivideAndConquerSort.MergeSort(
+      [-7, 7, 7, 7, -10, 0, -1, 1, -9, -8, -6, 6, 5, -5, -4, 4, 3, -3, 2, -2],
       0,
-      -1,
-      1,
-      -9,
-      -8,
-      -6,
-      6,
-      5,
-      -5,
-      -4,
-      4,
-      3,
-      -3,
-      2,
-      -2
-    ]);
+      19
+    );
     expect(actual).toEqual(expected);
   });
 });

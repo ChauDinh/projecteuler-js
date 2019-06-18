@@ -16,32 +16,43 @@
  * Combine: Merge the two sorted subsequences to produce the sorted answer
  */
 
-module.exports.MergeSort = arr => {
-  if (arr.length === 1) {
-    return arr;
+function Merge(arr, p, q, r) {
+  let n1 = q - p + 1;
+  let n2 = r - q;
+  let left = new Array(n1),
+    right = new Array(n2);
+
+  for (let i = 0; i < n1; i++) {
+    left[i] = arr[p + i];
   }
 
-  const middle = Math.floor(arr.length / 2);
-  const left = arr.slice(0, middle);
-  const right = arr.slice(middle);
+  for (let j = 0; j < n2; j++) {
+    right[j] = arr[q + j + 1];
+  }
 
-  return merge(this.MergeSort(left), this.MergeSort(right));
-};
+  left[n1] = Infinity;
+  right[n2] = Infinity;
 
-function merge(left, right) {
-  let result = [];
-  let indexLeft = 0;
-  let indexRight = 0;
-
-  while (indexLeft < left.length && indexRight < right.length) {
-    if (left[indexLeft] < right[indexRight]) {
-      result.push(left[indexLeft]);
-      indexLeft++;
+  let i = 0,
+    j = 0;
+  for (let k = p; k <= r; k++) {
+    if (left[i] <= right[j]) {
+      arr[k] = left[i];
+      i++;
     } else {
-      result.push(right[indexRight]);
-      indexRight++;
+      arr[k] = right[j];
+      j++;
     }
   }
-
-  return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 }
+
+module.exports.MergeSort = (arr, p, r) => {
+  if (p < r) {
+    let q = Math.floor((p + r) / 2);
+    this.MergeSort(arr, p, q);
+    this.MergeSort(arr, q + 1, r);
+    Merge(arr, p, q, r);
+  }
+
+  return arr;
+};
