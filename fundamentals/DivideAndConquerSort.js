@@ -100,7 +100,7 @@ module.exports.InsertionSortWithRecursion = (arr, n) => {
 
 module.exports.BinarySearchWithRecursion = (arr, p, r, search) => {
   if (p > r) {
-    return `NIL`;
+    return false;
   }
   let q = Math.floor((p + r) / 2);
   if (search == arr[q]) {
@@ -110,4 +110,30 @@ module.exports.BinarySearchWithRecursion = (arr, p, r, search) => {
   } else if (search > arr[q]) {
     return this.BinarySearchWithRecursion(arr, q + 1, r, search);
   }
+};
+
+/**
+ * Can we optimize the insertion sort with the binary search algorithm?
+ *
+ * Why this idea? Because the while loop in Insertion Sort is belonged to a sorted array (arr[0, ... j-1])
+ *
+ * So we can use the binary search algorithm to reduce the time complexity from O(n^2) to O(nlogn);
+ *
+ * The answer is NO, the time complexity is still O(n^2) because we have to shift all elements greater than the key value towards the end of the array to insert the array. So, the overall worst-case is still o(n^2);
+ *
+ * But if you want to use Binary search idea in insertion sort, it should look like this below:
+ */
+
+module.exports.InsertionSortWithBinarySearch = arr => {
+  for (let j = 1; j < arr.length; j++) {
+    let i = j - 1;
+    let value = arr[j];
+    let loc = this.BinarySearchWithRecursion(arr, 0, i, value);
+    while (i >= loc && arr[i] > value) {
+      arr[i + 1] = arr[i];
+      i--;
+    }
+    arr[i + 1] = value;
+  }
+  return arr;
 };

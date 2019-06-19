@@ -84,4 +84,42 @@ describe("Return a sorted array", () => {
     );
     expect(actual).toEqual(expected);
   });
+
+  it("sort an array using insertion sort with binary search algorithm", () => {
+    let expected = [-1, 0, 1, 2];
+    let actual = DivideAndConquerSort.InsertionSortWithBinarySearch([
+      0,
+      1,
+      2,
+      -1
+    ]);
+    expect(actual).toEqual(expected);
+
+    expected = [-10, -8, -6, -4, -2, 0, 1, 3, 5, 7, 9];
+    actual = DivideAndConquerSort.InsertionSortWithBinarySearch([
+      9,
+      -8,
+      -6,
+      3,
+      5,
+      -10,
+      7,
+      -4,
+      -2,
+      1,
+      0
+    ]);
+    expect(actual).toEqual(expected);
+
+    expected = [0, 0, 0, 0, 0, 0, 1];
+    actual = DivideAndConquerSort.InsertionSortWithBinarySearch([
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]);
+  });
 });
