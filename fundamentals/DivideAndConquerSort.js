@@ -137,3 +137,11 @@ module.exports.InsertionSortWithBinarySearch = arr => {
   }
   return arr;
 };
+
+/**
+ * Exercise 2.3-7 in CLRS
+ *
+ * Describe an O(nlgn) algorithm that, given a set S of n integers and another integer X, determines whether or not there exist two elements of S whose sum is equal to X.
+ */
+
+// There is an additional variant of this problem: Determines two elements of S whose sum is nearest to X.
