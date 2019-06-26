@@ -55,4 +55,32 @@ const findingMaxCrossingSubarray = (arr, low, mid, high) => {
   };
 };
 
-console.log(findingMaxCrossingSubarray([1, 2, -3, 0, 8, -7, 0, 0], 0, 3, 7));
+// console.log(findingMaxCrossingSubarray([0, 2, -3, 0, -10, -7, 0, 0], 0, 3, 7));
+
+module.exports.findMaxSubarray = (arr, low, high) => {
+  if (low === high) return arr[low];
+  let mid = Math.floor((low + high) / 2);
+
+  let { leftLow, leftHigh, leftSum } = this.findMaxSubarray(arr, low, mid);
+  let { rightLow, rightHigh, rightSum } = this.findMaxSubarray(
+    arr,
+    mid + 1,
+    high
+  );
+  let { crossLow, crossHigh, crossSum } = findingMaxCrossingSubarray(
+    arr,
+    low,
+    mid,
+    high
+  );
+
+  if (leftSum >= rightSum && leftSum >= crossSum) {
+    return { leftLow, leftHigh, leftSum };
+  } else if (rightSum >= leftSum && rightSum >= crossSum) {
+    return { rightLow, rightHigh, rightSum };
+  } else {
+    return { crossLow, crossHigh, crossSum };
+  }
+};
+
+console.log(this.findMaxSubarray([1, 2, 3, 0, -1, 2], 0, 2));
