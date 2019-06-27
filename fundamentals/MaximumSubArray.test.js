@@ -17,5 +17,13 @@ describe("Return a maximum subarray", () => {
     };
     actual = maxSubArray.findMaxSubarray([1000], 0, 0);
     expect(actual).toEqual(expected);
+
+    expected = {
+      low: 1,
+      high: 5,
+      sum: 16
+    };
+    actual = maxSubArray.findMaxSubarray([-1, 2, 3, -4, 5, 10], 0, 5);
+    expect(actual).toEqual(expected);
   });
 });
