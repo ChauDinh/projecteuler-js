@@ -49,38 +49,34 @@ const findingMaxCrossingSubarray = (arr, low, mid, high) => {
   }
 
   return {
-    "max-left": maxLeft,
-    "max-right": maxRight,
-    result: left + right
+    low: maxLeft,
+    high: maxRight,
+    sum: left + right
   };
 };
 
-// console.log(findingMaxCrossingSubarray([0, 2, -3, 0, -10, -7, 0, 0], 0, 3, 7));
-
 module.exports.findMaxSubarray = (arr, low, high) => {
-  if (low === high) return arr[low];
-  let mid = Math.floor((low + high) / 2);
-
-  let { leftLow, leftHigh, leftSum } = this.findMaxSubarray(arr, low, mid);
-  let { rightLow, rightHigh, rightSum } = this.findMaxSubarray(
-    arr,
-    mid + 1,
-    high
-  );
-  let { crossLow, crossHigh, crossSum } = findingMaxCrossingSubarray(
-    arr,
-    low,
-    mid,
-    high
-  );
-
-  if (leftSum >= rightSum && leftSum >= crossSum) {
-    return { leftLow, leftHigh, leftSum };
-  } else if (rightSum >= leftSum && rightSum >= crossSum) {
-    return { rightLow, rightHigh, rightSum };
+  if (low === high) {
+    return { low: low, high: high, sum: arr[low] };
   } else {
-    return { crossLow, crossHigh, crossSum };
+    let mid = Math.floor((low + high) / 2);
+    let leftResult = this.findMaxSubarray(arr, low, mid);
+    let rightResult = this.findMaxSubarray(arr, mid + 1, high);
+    let crossResult = findingMaxCrossingSubarray(arr, low, mid, high);
+    if (
+      leftResult.sum >= rightResult.sum &&
+      leftResult.sum >= crossResult.sum
+    ) {
+      return leftResult;
+    } else if (
+      rightResult.sum >= leftResult.sum &&
+      rightResult.sum >= crossResult.sum
+    ) {
+      return rightResult;
+    } else {
+      return crossResult;
+    }
   }
 };
 
-console.log(this.findMaxSubarray([1, 2, 3, 0, -1, 2], 0, 2));
+console.log(this.findMaxSubarray([1, 2, 3], 0, 2));
